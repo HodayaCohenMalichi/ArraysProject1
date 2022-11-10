@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class CurrencyConverter {
+    public static void main(String[] args) {
+        //  String url_str = "https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/USD";
+
+        double EUR = 3.6850;
+        double USD = 3.5260;
+        Scanner scanner = new Scanner(System.in);
+        int userChoice = 0;
+        double amount = 0;
+
+        do {
+            System.out.println(" ");
+            System.out.println("Press  1 to convert ILS to USD");
+            System.out.println("Press  2 to convert USD to ILS ");
+            System.out.println("Press  3 to convert EUR to ILS");
+            System.out.println("Press  4 to convert ILS to EUR");
+            System.out.println("press 0 to exit");
+
+            // try catch?
+            try {
+                userChoice = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println("You must enter a valid option according to the menu!");
+                userChoice = 9;
+                scanner = new Scanner(System.in);}
+
+            if (userChoice == 1 || userChoice == 2 || userChoice == 3 || userChoice == 4) {
+                System.out.println("Please enter the amount you want to convert:");
+
+                // try catch?
+                try {
+                    amount = scanner.nextDouble();
+                } catch (Exception e) {
+                    System.out.println("You must enter a valid amount to convert!");
+                    userChoice = 9;
+                    scanner = new Scanner(System.in);}
+
+            } switch (userChoice) {
+                case 1:
+                    System.out.println(amount + " ILS to USD=" + amount / USD + '$'); break;
+                case 2:
+                    System.out.println(amount + " USD to ILS=" + amount * USD + '₪'); break;
+                case 3:
+                    System.out.println(amount + " EUR to ILS=" + amount * EUR + '₪'); break;
+                case 4:
+                    System.out.println(amount + " ILS to EUR=" + amount / EUR + '€'); break;
+                case 0:
+                    System.out.println("GOODBYE."); break;
+                default:
+                    System.out.println("Please enter only numbers 1-4, or 0 to exit");}
+
+        } while (userChoice != 0);
+        System.out.println("Thank you for using,see you next time :)");}
+
+
+}
